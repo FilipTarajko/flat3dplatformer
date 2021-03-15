@@ -39,7 +39,14 @@ public class Player : MonoBehaviour
         }
         else
         {
-            gravitySpeed -= 10 * Time.deltaTime;
+            if (Input.GetKey(KeyCode.Space))
+            {
+                gravitySpeed -= 10 * Time.deltaTime;
+            }
+            else
+            {
+                gravitySpeed -= 20 * Time.deltaTime;
+            }
         }
     }
     void HandleMovement()
