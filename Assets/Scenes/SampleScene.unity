@@ -704,10 +704,11 @@ MonoBehaviour:
   moveVector: {x: 0, y: 0, z: 0}
   gravitySpeed: 0
   lastGrounded: 0
-  turningFactor: 0.08
+  turningFactor: 0.04
   cameraFollowTime: 0.08
   addedX: 0
   smoothDampSpeedPlayer: {x: 0, y: 0, z: 0}
+  smoothDampSpeedCamera: {x: 0, y: 0, z: 0}
 --- !u!1 &1793944510
 GameObject:
   m_ObjectHideFlags: 0

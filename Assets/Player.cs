@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float cameraFollowTime;
     public float addedX;
     public Vector3 smoothDampSpeedPlayer = Vector3.zero;
-    private Vector3 smoothDampSpeedCamera = Vector3.zero;
+    public Vector3 smoothDampSpeedCamera = Vector3.zero;
 
     private void Update()
     {
@@ -67,6 +67,6 @@ public class Player : MonoBehaviour
 
     void HandleCamera()
     {
-        cameraParent.position = Vector3.SmoothDamp(cameraParent.position, transform.position, ref smoothDampSpeedCamera, cameraFollowTime); 
+        cameraParent.position = Vector3.SmoothDamp(cameraParent.position, transform.position + cameraFollowTime*moveVector/2, ref smoothDampSpeedCamera, cameraFollowTime); 
     }
 }
