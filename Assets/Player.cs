@@ -5,17 +5,24 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Transform playerCamera;
+    public Transform cameraParent;
     public CharacterController characterController;
     public float speed;
     public bool isDoubleJumpAvailable;
     public Vector3 moveVector;
     public float gravitySpeed;
     public float lastGrounded;
+    public float turningFactor;
+    public float cameraFollowTime;
+    public float addedX;
+    public Vector3 smoothDampSpeedPlayer = Vector3.zero;
+    private Vector3 smoothDampSpeedCamera = Vector3.zero;
 
     private void Update()
     {
         HandleGrounded();
         HandleMovement();
+        HandleCamera();
     }
 
     void HandleGrounded()
@@ -37,9 +44,7 @@ public class Player : MonoBehaviour
     }
     void HandleMovement()
     {
-        moveVector = new Vector3(1 * Input.GetAxisRaw("Horizontal"), 0, 0);
-        moveVector.y = 0;
-        moveVector *= speed;
+        moveVector = Vector3.SmoothDamp(moveVector, new Vector3(speed * Input.GetAxisRaw("Horizontal"), 0, 0), ref smoothDampSpeedPlayer, turningFactor);
         moveVector.y = gravitySpeed;
         characterController.Move(moveVector * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space) && lastGrounded < 0.15)
@@ -51,5 +56,10 @@ public class Player : MonoBehaviour
             gravitySpeed = 10;
             isDoubleJumpAvailable = false;
         }
+    }
+
+    void HandleCamera()
+    {
+        cameraParent.position = Vector3.SmoothDamp(cameraParent.position, transform.position, ref smoothDampSpeedCamera, cameraFollowTime); 
     }
 }
