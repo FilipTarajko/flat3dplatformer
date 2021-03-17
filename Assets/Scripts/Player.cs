@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float doubleJumpPower;
     public float gravityNormal;
     public float gravityLower;
+    public Transform playerParent;
 
     private void Update()
     {

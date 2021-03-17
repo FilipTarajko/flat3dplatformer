@@ -1728,6 +1728,7 @@ MonoBehaviour:
   doubleJumpPower: 20
   gravityNormal: 80
   gravityLower: 40
+  playerParent: {fileID: 242920035}
 --- !u!1001 &1431701079
 PrefabInstance:
   m_ObjectHideFlags: 0
