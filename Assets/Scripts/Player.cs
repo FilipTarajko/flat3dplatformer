@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     public float addedX;
     public Vector3 smoothDampSpeedPlayer = Vector3.zero;
     public Vector3 smoothDampSpeedCamera = Vector3.zero;
+    public float jumpPower;
+    public float doubleJumpPower;
+    public float gravityNormal;
+    public float gravityLower;
 
     private void Update()
     {
@@ -41,11 +45,11 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                gravitySpeed -= 10 * Time.deltaTime;
+                gravitySpeed -= gravityLower * Time.deltaTime;
             }
             else
             {
-                gravitySpeed -= 20 * Time.deltaTime;
+                gravitySpeed -= gravityNormal * Time.deltaTime;
             }
         }
     }
@@ -56,11 +60,11 @@ public class Player : MonoBehaviour
         characterController.Move(moveVector * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space) && lastGrounded < 0.15)
         {
-            gravitySpeed = 10;
+            gravitySpeed = jumpPower;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && isDoubleJumpAvailable)
         {
-            gravitySpeed = 10;
+            gravitySpeed = doubleJumpPower;
             isDoubleJumpAvailable = false;
         }
     }

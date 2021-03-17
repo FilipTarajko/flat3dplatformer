@@ -1723,6 +1723,10 @@ MonoBehaviour:
   addedX: 0
   smoothDampSpeedPlayer: {x: 0, y: 0, z: 0}
   smoothDampSpeedCamera: {x: 0, y: 0, z: 0}
+  jumpPower: 20
+  doubleJumpPower: 20
+  gravityNormal: 80
+  gravityLower: 40
 --- !u!1001 &1431701079
 PrefabInstance:
   m_ObjectHideFlags: 0
